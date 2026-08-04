@@ -1,3 +1,4 @@
+import 'note_screen.dart';
 import 'package:flutter/material.dart';
 import 'ai_screen.dart';
 import '../widgets/tool_button.dart';
