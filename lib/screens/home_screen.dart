@@ -1,14 +1,31 @@
-import 'note_screen.dart';
 import 'package:flutter/material.dart';
+import 'note_screen.dart';
 import 'ai_screen.dart';
-import '../widgets/tool_button.dart';
+import 'tool_screen.dart';
+
 
 class HomeScreen extends StatelessWidget {
+
   const HomeScreen({super.key});
 
+
+  void move(BuildContext context, Widget page){
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context)=>page,
+      ),
+    );
+
+  }
+
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context){
+
     return Scaffold(
+
       backgroundColor: const Color(0xffF7F8FC),
 
       appBar: AppBar(
@@ -16,61 +33,91 @@ class HomeScreen extends StatelessWidget {
         centerTitle: true,
       ),
 
+
       body: Padding(
+
         padding: const EdgeInsets.all(24),
 
         child: Column(
+
           crossAxisAlignment: CrossAxisAlignment.start,
 
-          children: [
+          children:[
+
 
             const Text(
               "AI 학습 필기 노트",
-              style: TextStyle(
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
+              style:TextStyle(
+                fontSize:28,
+                fontWeight:FontWeight.bold,
               ),
             ),
 
-            const SizedBox(height: 30),
+
+            const SizedBox(height:30),
 
 
-            ToolButton(
-              icon: Icons.edit,
-              title: "새 노트",
+            button(
+              context,
+              "✏️ 새 노트",
+              ()=>move(context,const NoteScreen()),
             ),
 
 
-            ToolButton(
-              icon: Icons.smart_toy,
-              title: "AI 선생님",
-              onTap: () {
-
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const AIScreen(),
-                  ),
-                );
-
-              },
+            button(
+              context,
+              "🤖 AI 선생님",
+              ()=>move(context,const AIScreen()),
             ),
 
 
-            ToolButton(
-              icon: Icons.picture_as_pdf,
-              title: "PDF 가져오기",
+            button(
+              context,
+              "📄 PDF 가져오기",
+              ()=>move(context,const ToolScreen(title:"PDF")),
             ),
 
 
-            ToolButton(
-              icon: Icons.timer,
-              title: "공부 타이머",
+            button(
+              context,
+              "⏱ 공부 타이머",
+              ()=>move(context,const ToolScreen(title:"타이머")),
             ),
 
           ],
+
         ),
+
       ),
+
     );
+
   }
+
+
+  Widget button(
+      BuildContext context,
+      String text,
+      VoidCallback tap
+      ){
+
+    return Card(
+
+      margin:const EdgeInsets.only(bottom:15),
+
+      child:ListTile(
+
+        title:Text(text),
+
+        trailing:
+        const Icon(Icons.arrow_forward_ios),
+
+        onTap:tap,
+
+      ),
+
+    );
+
+  }
+
 }
