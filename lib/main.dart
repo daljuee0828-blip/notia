@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screens/home_screen.dart';
+import 'home_screen.dart';
 
 void main() {
   runApp(const NotiaApp());
@@ -12,7 +12,7 @@ class NotiaApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Notia',
+      title: "Notia",
       theme: ThemeData(
         useMaterial3: true,
         colorSchemeSeed: Colors.blue,
