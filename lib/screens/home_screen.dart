@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'ai_screen.dart';
 import '../widgets/tool_button.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -32,25 +33,40 @@ class HomeScreen extends StatelessWidget {
 
             const SizedBox(height: 30),
 
+
             ToolButton(
               icon: Icons.edit,
               title: "새 노트",
             ),
 
+
             ToolButton(
               icon: Icons.smart_toy,
               title: "AI 선생님",
+              onTap: () {
+
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const AIScreen(),
+                  ),
+                );
+
+              },
             ),
+
 
             ToolButton(
               icon: Icons.picture_as_pdf,
               title: "PDF 가져오기",
             ),
 
+
             ToolButton(
               icon: Icons.timer,
               title: "공부 타이머",
             ),
+
           ],
         ),
       ),
